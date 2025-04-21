@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
 
 class TaskController extends Controller
 {
@@ -30,26 +32,14 @@ class TaskController extends Controller
         return view('tasks.tasks', compact('tasks', 'projects'));
     }
 
-    public function store(Request $request)
+    public function store(StoreTaskRequest $request)
     {
-        $request->validate([
-            'title' => 'required|string',
-            'status' => 'required|in:pending,in_progress,done',
-            'due_date' => 'required|date',
-        ]);
-
         Task::create($request->all());
         return redirect()->route('tasks.tasks')->with('success', 'Tarefa criada com sucesso!');
     }
 
-    public function update(Request $request, Task $task)
+    public function update(UpdateTaskRequest $request, Task $task)
     {
-        $request->validate([
-            'title' => 'required|string',
-            'status' => 'required|in:pending,in_progress,done',
-            'due_date' => 'required|date',
-        ]);
-
         $task->update($request->all());
         return redirect()->route('tasks.tasks')->with('success', 'Tarefa atualizada com sucesso!');
     }
