@@ -23,8 +23,8 @@ class UpdateTaskRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'status' => 'required|in:pending,in_progress,done',
-            'due_date' => 'required|date',
+            'status' => 'required|in:pending,in_progress,completed',
+            'due_date' => 'nullable|date',
             'project_id' => 'nullable|exists:projects,id',
         ];
     }
