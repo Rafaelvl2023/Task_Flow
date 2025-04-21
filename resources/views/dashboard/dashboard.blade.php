@@ -157,7 +157,7 @@
                         <i data-lucide="layers"></i>
                     </div>
                     <div>
-                        <h5 class="card-title">Tarefas sem projeto"</h5>
+                        <h5 class="card-title">Tarefas sem projeto</h5>
                         <p class="card-text">{{ $tasksNoProject }}</p>
                     </div>
                 </div>
