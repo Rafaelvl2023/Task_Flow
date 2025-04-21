@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Projetos</title>
+    <link rel="icon" href="https://cdn-icons-png.freepik.com/256/17790/17790807.png?uid=R81172538&ga=GA1.1.487095378.1743434307&semt=ais_hybrid" type="image/jpeg">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
