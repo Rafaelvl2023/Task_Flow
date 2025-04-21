@@ -2,51 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
-use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Services\TaskService;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 
 class TaskController extends Controller
 {
+    protected $taskService;
+
+    public function __construct(TaskService $taskService)
+    {
+        $this->taskService = $taskService;
+    }
+
     public function index(Request $request)
     {
-        $query = Task::with('project');
-
-        if ($request->filled('title')) {
-            $query->where('title', 'like', '%' . $request->title . '%');
-        }
-
-        if ($request->filled('status')) {
-            $query->where('status', $request->status);
-        }
-
-        if ($request->filled('project_id')) {
-            $query->where('project_id', $request->project_id);
-        }
-
-        $tasks = $query->paginate(5)->appends($request->query());
-        $projects = Project::all();
-
+        $tasks = $this->taskService->getFilteredTasks($request);
+        $projects = $this->taskService->getAllProjects();
         return view('tasks.tasks', compact('tasks', 'projects'));
     }
 
     public function store(StoreTaskRequest $request)
     {
-        Task::create($request->all());
-        return redirect()->route('tasks.tasks')->with('success', 'Tarefa criada com sucesso!');
+        $this->taskService->createTask($request->validated());
+        return redirect()->route('tasks.index')->with('success', 'Tarefa criada com sucesso!');
     }
 
-    public function update(UpdateTaskRequest $request, Task $task)
+    public function update(UpdateTaskRequest $request, $id)
     {
-        $task->update($request->all());
-        return redirect()->route('tasks.tasks')->with('success', 'Tarefa atualizada com sucesso!');
+        $this->taskService->updateTask($id, $request->validated());
+        return redirect()->route('tasks.index')->with('success', 'Tarefa atualizada com sucesso!');
     }
 
-    public function destroy(Task $task)
+    public function destroy($id)
     {
-        $task->delete();
-        return redirect()->route('tasks.tasks')->with('success', 'Tarefa excluída com sucesso!');
+        $this->taskService->deleteTask($id);
+        return redirect()->route('tasks.index')->with('success', 'Tarefa excluída com sucesso!');
     }
 }
