@@ -64,11 +64,11 @@
                                 <td>{{ $task->due_date }}</td>
                                 <td>{{ $task->project->name ?? 'Sem Projeto' }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning" data-toggle="modal"
+                                    <button class="btn btn-sm btn-warning m-1" data-toggle="modal"
                                         data-target="#editModal{{ $task->id }}">
                                         <i class="fas fa-edit"> Editar</i>
                                     </button>
-                                    <button class="btn btn-sm btn-danger mt-1" data-toggle="modal"
+                                    <button class="btn btn-sm btn-danger m-1" data-toggle="modal"
                                         data-target="#deleteModal{{ $task->id }}">
                                         <i class="fas fa-trash-alt"> Excluir</i>
                                     </button>

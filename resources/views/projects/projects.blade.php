@@ -54,10 +54,10 @@
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->description }}</td>
                         <td>
-                            <button href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal{{ $project->id }}">
+                            <button href="#" class="btn btn-warning btn-sm m-1" data-toggle="modal" data-target="#editModal{{ $project->id }}">
                                 <i class="fas fa-edit"> Editar</i>
                             </button>
-                            <button href="#" class="btn btn-danger btn-sm mt-1" data-toggle="modal" data-target="#deleteModal{{ $project->id }}">
+                            <button href="#" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal{{ $project->id }}">
                                 <i class="fas fa-trash-alt"> Excluir</i>
                             </button>
                         </td>
