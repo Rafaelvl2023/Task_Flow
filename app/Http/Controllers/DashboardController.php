@@ -19,10 +19,7 @@ class DashboardController extends Controller
 
         $pendingTasks = Task::where('status', 'pending')->count();
 
-        $topProjects = Project::withCount('tasks')
-            ->orderByDesc('tasks_count')
-            ->take(1)
-            ->get();
+        $tasksNoProject = Task::whereNull('project_id')->count();
 
         return view('dashboard.dashboard', compact(
             'totalProjects',
@@ -30,7 +27,7 @@ class DashboardController extends Controller
             'completedTasks',
             'pendingTasks',
             'inProgressTasks',
-            'topProjects'
+            'tasksNoProject'
         ));
     }
 }

@@ -157,12 +157,8 @@
                         <i data-lucide="layers"></i>
                     </div>
                     <div>
-                        <h5 class="card-title">Projeto com mais tarefas</h5>
-                        <ul class="card-text pl-3 mb-0">
-                            @foreach ($topProjects as $project)
-                                <li>{{ $project->name }} ({{ $project->tasks_count }} tarefas)</li>
-                            @endforeach
-                        </ul>
+                        <h5 class="card-title">Tarefas sem projetos</h5>
+                        <p class="card-text">{{ $tasksNoProject }}</p>
                     </div>
                 </div>
             </div>
